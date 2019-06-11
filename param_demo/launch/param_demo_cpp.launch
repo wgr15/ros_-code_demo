@@ -1,0 +1,18 @@
+<launch>
+	<!--Param标签设置单个参数-->
+	<param name="param1" value="1" />
+	<param name="param1" value="1" />
+	<param name="robot_description" command="$(find xacro)/xacro.py $(find demo)/urdf/robot.urdf />
+
+	<!--Param标签设置多个参数-->
+	<rosparam>
+        param3: 3
+        param4: 4
+        param10: helloworld!
+	</rosparam>
+	<!--以上写法将参数转成YAML文件加载，注意param前面必须为空格，不能用Tab，否则YAML解析错误-->
+
+	<rosparam file="find param_demo/config/myparam.yaml" command="load />
+	<node pkg="param_demo" type="param_demo" name="param_demo" output="screen" />
+
+</launch> 
